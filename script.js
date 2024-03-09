@@ -8,10 +8,14 @@ function draw(num) {
     let rows = num;
     let columns = num;
 
+    let size = 700 / num;
+
     for (let i = 0; i < rows; i++) {
         for (let j = 0; j < columns; j++) {
 
             let gridItem = document.createElement("div");
+            gridItem.style.width = `${size}px`;
+            gridItem.style.height = `${size}px`;
             gridItem.classList.add("grid-item");
             gridItem.addEventListener("pointerover", () => {
                 gridItem.classList.add("hovered-div")
@@ -20,18 +24,17 @@ function draw(num) {
         }
     }
 
-    let gridWidth = 44 * columns;
-    let gridHeight = 44 * rows;
+    let gridSize = 700 + (4 * num + 0.03);
 
-    gridContainer.style.width = gridWidth + "px";
-    gridContainer.style.height = gridHeight + "px";
+    gridContainer.style.width = gridSize + "px";
+    gridContainer.style.height = gridSize + "px";
 
 }
 
 btn.addEventListener("click", () => {
-    const num = prompt("Input grid-size between 1-24 : ")
+    const num = prompt("Input a grid-size between 1-64 : ")
 
-    if (!Number(num) || num > 24) {
+    if (!Number(num) || num > 64) {
         prompt("Invalid input. Please enter a number valid number")
     }
 
@@ -41,6 +44,7 @@ btn.addEventListener("click", () => {
 
 
 draw(16)
+
 
 
 
