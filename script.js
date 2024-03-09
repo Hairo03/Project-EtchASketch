@@ -1,12 +1,13 @@
 const gridContainer = document.querySelector(".grid-container")
 const btn = document.querySelector("button")
 
-let num = 16;
 
-let rows = num;
-let columns = num;
 
-function draw() {
+function draw(num) {
+
+    let rows = num;
+    let columns = num;
+
     for (let i = 0; i < rows; i++) {
         for (let j = 0; j < columns; j++) {
 
@@ -18,19 +19,28 @@ function draw() {
             gridContainer.appendChild(gridItem);
         }
     }
+
+    let gridWidth = 44 * columns;
+    let gridHeight = 44 * rows;
+
+    gridContainer.style.width = gridWidth + "px";
+    gridContainer.style.height = gridHeight + "px";
+
 }
 
 btn.addEventListener("click", () => {
-    prompt("Input grid-size : ")
+    const num = prompt("Input grid-size between 1-24 : ")
+
+    if (!Number(num) || num > 24) {
+        prompt("Invalid input. Please enter a number valid number")
+    }
+
+    gridContainer.innerHTML = "";
+    draw(Math.floor(num));
 })
 
-let gridWidth = 44 * columns;
-let gridHeight = 44 * rows;
 
-gridContainer.style.width = gridWidth + "px";
-gridContainer.style.height = gridHeight + "px";
-
-draw()
+draw(16)
 
 
 
