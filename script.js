@@ -24,7 +24,7 @@ function draw(num) {
         }
     }
 
-    let gridSize = 700 + (4 * num + 0.03);
+    let gridSize = 700 + (4 * num + 0.5);
 
     gridContainer.style.width = gridSize + "px";
     gridContainer.style.height = gridSize + "px";
